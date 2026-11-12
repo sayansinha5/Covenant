@@ -1,0 +1,71 @@
+# Environment files (only the committed *.env.example templates are tracked)
+.env
+.env.*
+!.env.example
+*/.env
+*/.env.*
+!*/.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.coverage
+htmlcov/
+
+# Backend runtime data
+backend/storage/*
+!backend/storage/.gitkeep
+backend/evals/arbiter/results/*
+!backend/evals/arbiter/results/.gitkeep
+
+# Frontend
+node_modules/
+dist/
+*.local
+.vite/
+coverage/
+
+# Editors and OS
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# Logs, caches, and local junk
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.eslintcache
+*.tsbuildinfo
+.cache/
+.tox/
+.nox/
+*.pid
+*.pid.lock
+
+# Python build output and extra coverage
+build/
+*.egg
+.eggs/
+.coverage.*
+coverage.xml
+
+# Local databases
+*.sqlite
+*.sqlite3
+
+# Internal build spec (kept on disk, not published)
+PROJECT_SPECS.md

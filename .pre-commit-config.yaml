@@ -1,0 +1,25 @@
+# Optional git hooks: `pre-commit install` once, then they run on `git commit`.
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.17.3
+    hooks:
+      - id: ruff-check
+        args: [--fix]
+        files: ^(backend|workers|mcp_server)/
+      - id: ruff-format
+        files: ^(backend|workers|mcp_server)/
+
+  - repo: local
+    hooks:
+      - id: eslint
+        name: eslint (frontend)
+        entry: npm --prefix frontend run lint
+        language: system
+        files: ^frontend/.*\.(js|jsx)$
+        pass_filenames: false
+      - id: prettier
+        name: prettier (frontend)
+        entry: npm --prefix frontend run format:check
+        language: system
+        files: ^frontend/
+        pass_filenames: false

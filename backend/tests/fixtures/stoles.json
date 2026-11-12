@@ -1,0 +1,362 @@
+[
+  {
+    "sku": "KS-001",
+    "name": "Kantha Stole Indigo Lotus",
+    "price": "32.00",
+    "currency": "USD",
+    "material": "upcycled cotton",
+    "size_cm": "180 x 70",
+    "description": "A deep indigo kantha stole in upcycled cotton, embroidered with lotus blossoms opening across the border. Each piece is hand-stitched by women artisans in West Bengal, so no two are alike."
+  },
+  {
+    "sku": "KS-002",
+    "name": "Kantha Stole Indigo Paisley",
+    "price": "39.00",
+    "currency": "USD",
+    "material": "soft silk blend",
+    "size_cm": "180 x 70",
+    "description": "A deep indigo kantha stole in soft silk blend, embroidered with flowing paisleys stitched in running thread. Light enough for spring evenings and cosy enough for winter."
+  },
+  {
+    "sku": "KS-003",
+    "name": "Kantha Stole Indigo Peacock",
+    "price": "46.00",
+    "currency": "USD",
+    "material": "handloom cotton",
+    "size_cm": "190 x 75",
+    "description": "A deep indigo kantha stole in handloom cotton, embroidered with a pair of peacocks framed by vines. A thoughtful gift that carries the story of the hands that made it."
+  },
+  {
+    "sku": "KS-004",
+    "name": "Kantha Stole Indigo Mango Leaf",
+    "price": "53.00",
+    "currency": "USD",
+    "material": "vintage sari silk",
+    "size_cm": "190 x 75",
+    "description": "A deep indigo kantha stole in vintage sari silk, embroidered with mango leaves scattered like a summer breeze. Drape it over your shoulders or wear it as a scarf for a touch of colour."
+  },
+  {
+    "sku": "KS-005",
+    "name": "Kantha Stole Indigo Tree of Life",
+    "price": "35.00",
+    "currency": "USD",
+    "material": "upcycled cotton",
+    "size_cm": "200 x 70",
+    "description": "A deep indigo kantha stole in upcycled cotton, embroidered with a tree of life rising from the centre. Each piece is hand-stitched by women artisans in West Bengal, so no two are alike."
+  },
+  {
+    "sku": "KS-006",
+    "name": "Kantha Stole Indigo Fish",
+    "price": "42.00",
+    "currency": "USD",
+    "material": "soft silk blend",
+    "size_cm": "200 x 70",
+    "description": "A deep indigo kantha stole in soft silk blend, embroidered with little fish swimming in tidy rows. Light enough for spring evenings and cosy enough for winter."
+  },
+  {
+    "sku": "KS-007",
+    "name": "Kantha Stole Indigo Sunburst",
+    "price": "49.00",
+    "currency": "USD",
+    "material": "handloom cotton",
+    "size_cm": "175 x 65",
+    "description": "A deep indigo kantha stole in handloom cotton, embroidered with sunbursts radiating in concentric rings. A thoughtful gift that carries the story of the hands that made it."
+  },
+  {
+    "sku": "KS-008",
+    "name": "Kantha Stole Indigo Elephant",
+    "price": "56.00",
+    "currency": "USD",
+    "material": "vintage sari silk",
+    "size_cm": "175 x 65",
+    "description": "A deep indigo kantha stole in vintage sari silk, embroidered with a procession of elephants along both ends. Drape it over your shoulders or wear it as a scarf for a touch of colour."
+  },
+  {
+    "sku": "KS-009",
+    "name": "Kantha Stole Indigo Jasmine",
+    "price": "38.00",
+    "currency": "USD",
+    "material": "upcycled cotton",
+    "size_cm": "180 x 70",
+    "description": "A deep indigo kantha stole in upcycled cotton, embroidered with tiny jasmine sprigs dotted over the field. Each piece is hand-stitched by women artisans in West Bengal, so no two are alike."
+  },
+  {
+    "sku": "KS-010",
+    "name": "Kantha Stole Indigo River Wave",
+    "price": "45.00",
+    "currency": "USD",
+    "material": "soft silk blend",
+    "size_cm": "180 x 70",
+    "description": "A deep indigo kantha stole in soft silk blend, embroidered with rippling waves that recall the river Ganges. Light enough for spring evenings and cosy enough for winter."
+  },
+  {
+    "sku": "KS-011",
+    "name": "Kantha Stole Saffron Lotus",
+    "price": "52.00",
+    "currency": "USD",
+    "material": "handloom cotton",
+    "size_cm": "190 x 75",
+    "description": "A warm saffron kantha stole in handloom cotton, embroidered with lotus blossoms opening across the border. A thoughtful gift that carries the story of the hands that made it."
+  },
+  {
+    "sku": "KS-012",
+    "name": "Kantha Stole Saffron Paisley",
+    "price": "34.00",
+    "currency": "USD",
+    "material": "vintage sari silk",
+    "size_cm": "190 x 75",
+    "description": "A warm saffron kantha stole in vintage sari silk, embroidered with flowing paisleys stitched in running thread. Drape it over your shoulders or wear it as a scarf for a touch of colour."
+  },
+  {
+    "sku": "KS-013",
+    "name": "Kantha Stole Saffron Peacock",
+    "price": "41.00",
+    "currency": "USD",
+    "material": "upcycled cotton",
+    "size_cm": "200 x 70",
+    "description": "A warm saffron kantha stole in upcycled cotton, embroidered with a pair of peacocks framed by vines. Each piece is hand-stitched by women artisans in West Bengal, so no two are alike."
+  },
+  {
+    "sku": "KS-014",
+    "name": "Kantha Stole Saffron Mango Leaf",
+    "price": "48.00",
+    "currency": "USD",
+    "material": "soft silk blend",
+    "size_cm": "200 x 70",
+    "description": "A warm saffron kantha stole in soft silk blend, embroidered with mango leaves scattered like a summer breeze. Light enough for spring evenings and cosy enough for winter."
+  },
+  {
+    "sku": "KS-015",
+    "name": "Kantha Stole Saffron Tree of Life",
+    "price": "55.00",
+    "currency": "USD",
+    "material": "handloom cotton",
+    "size_cm": "175 x 65",
+    "description": "A warm saffron kantha stole in handloom cotton, embroidered with a tree of life rising from the centre. A thoughtful gift that carries the story of the hands that made it."
+  },
+  {
+    "sku": "KS-016",
+    "name": "Kantha Stole Saffron Fish",
+    "price": "37.00",
+    "currency": "USD",
+    "material": "vintage sari silk",
+    "size_cm": "175 x 65",
+    "description": "A warm saffron kantha stole in vintage sari silk, embroidered with little fish swimming in tidy rows. Drape it over your shoulders or wear it as a scarf for a touch of colour."
+  },
+  {
+    "sku": "KS-017",
+    "name": "Kantha Stole Saffron Sunburst",
+    "price": "44.00",
+    "currency": "USD",
+    "material": "upcycled cotton",
+    "size_cm": "180 x 70",
+    "description": "A warm saffron kantha stole in upcycled cotton, embroidered with sunbursts radiating in concentric rings. Each piece is hand-stitched by women artisans in West Bengal, so no two are alike."
+  },
+  {
+    "sku": "KS-018",
+    "name": "Kantha Stole Saffron Elephant",
+    "price": "51.00",
+    "currency": "USD",
+    "material": "soft silk blend",
+    "size_cm": "180 x 70",
+    "description": "A warm saffron kantha stole in soft silk blend, embroidered with a procession of elephants along both ends. Light enough for spring evenings and cosy enough for winter."
+  },
+  {
+    "sku": "KS-019",
+    "name": "Kantha Stole Saffron Jasmine",
+    "price": "33.00",
+    "currency": "USD",
+    "material": "handloom cotton",
+    "size_cm": "190 x 75",
+    "description": "A warm saffron kantha stole in handloom cotton, embroidered with tiny jasmine sprigs dotted over the field. A thoughtful gift that carries the story of the hands that made it."
+  },
+  {
+    "sku": "KS-020",
+    "name": "Kantha Stole Saffron River Wave",
+    "price": "40.00",
+    "currency": "USD",
+    "material": "vintage sari silk",
+    "size_cm": "190 x 75",
+    "description": "A warm saffron kantha stole in vintage sari silk, embroidered with rippling waves that recall the river Ganges. Drape it over your shoulders or wear it as a scarf for a touch of colour."
+  },
+  {
+    "sku": "KS-021",
+    "name": "Kantha Stole Rose Lotus",
+    "price": "47.00",
+    "currency": "USD",
+    "material": "upcycled cotton",
+    "size_cm": "200 x 70",
+    "description": "A dusty rose kantha stole in upcycled cotton, embroidered with lotus blossoms opening across the border. Each piece is hand-stitched by women artisans in West Bengal, so no two are alike."
+  },
+  {
+    "sku": "KS-022",
+    "name": "Kantha Stole Rose Paisley",
+    "price": "54.00",
+    "currency": "USD",
+    "material": "soft silk blend",
+    "size_cm": "200 x 70",
+    "description": "A dusty rose kantha stole in soft silk blend, embroidered with flowing paisleys stitched in running thread. Light enough for spring evenings and cosy enough for winter."
+  },
+  {
+    "sku": "KS-023",
+    "name": "Kantha Stole Rose Peacock",
+    "price": "36.00",
+    "currency": "USD",
+    "material": "handloom cotton",
+    "size_cm": "175 x 65",
+    "description": "A dusty rose kantha stole in handloom cotton, embroidered with a pair of peacocks framed by vines. A thoughtful gift that carries the story of the hands that made it."
+  },
+  {
+    "sku": "KS-024",
+    "name": "Kantha Stole Rose Mango Leaf",
+    "price": "43.00",
+    "currency": "USD",
+    "material": "vintage sari silk",
+    "size_cm": "175 x 65",
+    "description": "A dusty rose kantha stole in vintage sari silk, embroidered with mango leaves scattered like a summer breeze. Drape it over your shoulders or wear it as a scarf for a touch of colour."
+  },
+  {
+    "sku": "KS-025",
+    "name": "Kantha Stole Rose Tree of Life",
+    "price": "50.00",
+    "currency": "USD",
+    "material": "upcycled cotton",
+    "size_cm": "180 x 70",
+    "description": "A dusty rose kantha stole in upcycled cotton, embroidered with a tree of life rising from the centre. Each piece is hand-stitched by women artisans in West Bengal, so no two are alike."
+  },
+  {
+    "sku": "KS-026",
+    "name": "Kantha Stole Rose Fish",
+    "price": "32.00",
+    "currency": "USD",
+    "material": "soft silk blend",
+    "size_cm": "180 x 70",
+    "description": "A dusty rose kantha stole in soft silk blend, embroidered with little fish swimming in tidy rows. Light enough for spring evenings and cosy enough for winter."
+  },
+  {
+    "sku": "KS-027",
+    "name": "Kantha Stole Rose Sunburst",
+    "price": "39.00",
+    "currency": "USD",
+    "material": "handloom cotton",
+    "size_cm": "190 x 75",
+    "description": "A dusty rose kantha stole in handloom cotton, embroidered with sunbursts radiating in concentric rings. A thoughtful gift that carries the story of the hands that made it."
+  },
+  {
+    "sku": "KS-028",
+    "name": "Kantha Stole Rose Elephant",
+    "price": "46.00",
+    "currency": "USD",
+    "material": "vintage sari silk",
+    "size_cm": "190 x 75",
+    "description": "A dusty rose kantha stole in vintage sari silk, embroidered with a procession of elephants along both ends. Drape it over your shoulders or wear it as a scarf for a touch of colour."
+  },
+  {
+    "sku": "KS-029",
+    "name": "Kantha Stole Rose Jasmine",
+    "price": "53.00",
+    "currency": "USD",
+    "material": "upcycled cotton",
+    "size_cm": "200 x 70",
+    "description": "A dusty rose kantha stole in upcycled cotton, embroidered with tiny jasmine sprigs dotted over the field. Each piece is hand-stitched by women artisans in West Bengal, so no two are alike."
+  },
+  {
+    "sku": "KS-030",
+    "name": "Kantha Stole Rose River Wave",
+    "price": "35.00",
+    "currency": "USD",
+    "material": "soft silk blend",
+    "size_cm": "200 x 70",
+    "description": "A dusty rose kantha stole in soft silk blend, embroidered with rippling waves that recall the river Ganges. Light enough for spring evenings and cosy enough for winter."
+  },
+  {
+    "sku": "KS-031",
+    "name": "Kantha Stole Moss Lotus",
+    "price": "42.00",
+    "currency": "USD",
+    "material": "handloom cotton",
+    "size_cm": "175 x 65",
+    "description": "A soft moss green kantha stole in handloom cotton, embroidered with lotus blossoms opening across the border. A thoughtful gift that carries the story of the hands that made it."
+  },
+  {
+    "sku": "KS-032",
+    "name": "Kantha Stole Moss Paisley",
+    "price": "49.00",
+    "currency": "USD",
+    "material": "vintage sari silk",
+    "size_cm": "175 x 65",
+    "description": "A soft moss green kantha stole in vintage sari silk, embroidered with flowing paisleys stitched in running thread. Drape it over your shoulders or wear it as a scarf for a touch of colour."
+  },
+  {
+    "sku": "KS-033",
+    "name": "Kantha Stole Moss Peacock",
+    "price": "56.00",
+    "currency": "USD",
+    "material": "upcycled cotton",
+    "size_cm": "180 x 70",
+    "description": "A soft moss green kantha stole in upcycled cotton, embroidered with a pair of peacocks framed by vines. Each piece is hand-stitched by women artisans in West Bengal, so no two are alike."
+  },
+  {
+    "sku": "KS-034",
+    "name": "Kantha Stole Moss Mango Leaf",
+    "price": "38.00",
+    "currency": "USD",
+    "material": "soft silk blend",
+    "size_cm": "180 x 70",
+    "description": "A soft moss green kantha stole in soft silk blend, embroidered with mango leaves scattered like a summer breeze. Light enough for spring evenings and cosy enough for winter."
+  },
+  {
+    "sku": "KS-035",
+    "name": "Kantha Stole Moss Tree of Life",
+    "price": "45.00",
+    "currency": "USD",
+    "material": "handloom cotton",
+    "size_cm": "190 x 75",
+    "description": "A soft moss green kantha stole in handloom cotton, embroidered with a tree of life rising from the centre. A thoughtful gift that carries the story of the hands that made it."
+  },
+  {
+    "sku": "KS-036",
+    "name": "Kantha Stole Moss Fish",
+    "price": "52.00",
+    "currency": "USD",
+    "material": "vintage sari silk",
+    "size_cm": "190 x 75",
+    "description": "A soft moss green kantha stole in vintage sari silk, embroidered with little fish swimming in tidy rows. Drape it over your shoulders or wear it as a scarf for a touch of colour."
+  },
+  {
+    "sku": "KS-037",
+    "name": "Kantha Stole Moss Sunburst",
+    "price": "34.00",
+    "currency": "USD",
+    "material": "upcycled cotton",
+    "size_cm": "200 x 70",
+    "description": "A soft moss green kantha stole in upcycled cotton, embroidered with sunbursts radiating in concentric rings. Each piece is hand-stitched by women artisans in West Bengal, so no two are alike."
+  },
+  {
+    "sku": "KS-038",
+    "name": "Kantha Stole Moss Elephant",
+    "price": "41.00",
+    "currency": "USD",
+    "material": "soft silk blend",
+    "size_cm": "200 x 70",
+    "description": "A soft moss green kantha stole in soft silk blend, embroidered with a procession of elephants along both ends. Light enough for spring evenings and cosy enough for winter."
+  },
+  {
+    "sku": "KS-039",
+    "name": "Kantha Stole Moss Jasmine",
+    "price": "48.00",
+    "currency": "USD",
+    "material": "handloom cotton",
+    "size_cm": "175 x 65",
+    "description": "A soft moss green kantha stole in handloom cotton, embroidered with tiny jasmine sprigs dotted over the field. A thoughtful gift that carries the story of the hands that made it."
+  },
+  {
+    "sku": "KS-040",
+    "name": "Kantha Stole Moss River Wave",
+    "price": "55.00",
+    "currency": "USD",
+    "material": "vintage sari silk",
+    "size_cm": "175 x 65",
+    "description": "A soft moss green kantha stole in vintage sari silk, embroidered with rippling waves that recall the river Ganges. Drape it over your shoulders or wear it as a scarf for a touch of colour."
+  }
+]

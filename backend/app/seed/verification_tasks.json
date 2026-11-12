@@ -1,0 +1,66 @@
+{
+  "translation": {
+    "instructions": "Translate each sentence into Spanish. Keep the id. Return a JSON array of objects with id and translation.",
+    "items": [
+      {
+        "id": "1",
+        "text": "The indigo kantha stole is hand-stitched by women artisans in West Bengal."
+      },
+      {
+        "id": "2",
+        "text": "Each piece is unique, light enough for spring and warm enough for winter evenings."
+      },
+      {
+        "id": "3",
+        "text": "It makes a thoughtful gift that carries the story of the hands that made it."
+      }
+    ],
+    "checks": [
+      {"id": "count", "type": "item_count_equals", "params": {"count": 3}, "applies_to": "whole"},
+      {"id": "present", "type": "field_present", "params": {"field": "translation"}, "applies_to": "each_item"},
+      {"id": "spanish", "type": "language_is", "params": {"field": "translation", "language": "es"}, "applies_to": "each_item"},
+      {"id": "hidden", "type": "no_hidden_text", "params": {"field": "translation"}, "applies_to": "each_item"}
+    ]
+  },
+  "catalog_data": {
+    "instructions": "From each note, fill dimensions, fabric and care. Return a JSON array with id, dimensions, fabric and care. Use only facts from the note.",
+    "items": [
+      {"id": "1", "note": "Cotton stole, 180 x 70 cm. Hand wash cold and dry flat."},
+      {"id": "2", "note": "Silk blend runner, 200 x 40 cm. Dry clean only."},
+      {"id": "3", "note": "Wool shawl, 190 x 80 cm. Cool iron on the reverse."}
+    ],
+    "checks": [
+      {"id": "count", "type": "item_count_equals", "params": {"count": 3}, "applies_to": "whole"},
+      {"id": "dimensions", "type": "field_present", "params": {"field": "dimensions"}, "applies_to": "each_item"},
+      {"id": "fabric", "type": "field_present", "params": {"field": "fabric"}, "applies_to": "each_item"},
+      {"id": "care", "type": "field_present", "params": {"field": "care"}, "applies_to": "each_item"}
+    ]
+  },
+  "copywriting": {
+    "instructions": "Write one short product sentence for each item. Return a JSON array with id and text.",
+    "items": [
+      {"id": "1", "name": "Indigo lotus stole"},
+      {"id": "2", "name": "Saffron paisley stole"},
+      {"id": "3", "name": "Moss peacock stole"}
+    ],
+    "checks": [
+      {"id": "count", "type": "item_count_equals", "params": {"count": 3}, "applies_to": "whole"},
+      {"id": "present", "type": "field_present", "params": {"field": "text"}, "applies_to": "each_item"},
+      {"id": "length", "type": "min_length", "params": {"field": "text", "min": 20}, "applies_to": "each_item"},
+      {"id": "hidden", "type": "no_hidden_text", "params": {"field": "text"}, "applies_to": "each_item"}
+    ]
+  },
+  "design": {
+    "instructions": "Describe one concept for each brief. Return a JSON array with id and description.",
+    "items": [
+      {"id": "1", "brief": "A Diwali logo using a kantha stitch border."},
+      {"id": "2", "brief": "A shop label with a small lotus."},
+      {"id": "3", "brief": "A wrapping stamp with a mango leaf."}
+    ],
+    "checks": [
+      {"id": "count", "type": "item_count_equals", "params": {"count": 3}, "applies_to": "whole"},
+      {"id": "present", "type": "field_present", "params": {"field": "description"}, "applies_to": "each_item"},
+      {"id": "length", "type": "min_length", "params": {"field": "description", "min": 20}, "applies_to": "each_item"}
+    ]
+  }
+}
