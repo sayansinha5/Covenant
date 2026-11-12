@@ -130,13 +130,16 @@ async def seed(session: AsyncSession, _settings: Settings) -> str:
             return f"Seed the workers first. Missing: {name}."
         workers[name] = worker
 
+    now = utcnow()
+    waiting = riya_approvals(riya, kabir, arjun_org, workers, now)
     planted = await session.scalar(
         select(Contract.id).where(Contract.title == "German listings for the Berlin boutique")
     )
     if planted is not None:
-        return "Showcase contracts are already in place."
-
-    now = utcnow()
+        added = await plant_missing(session, waiting, now=now)
+        if added == 0:
+            return "Showcase contracts are already in place."
+        return f"Added {added} approvals for Kantha & Co."
     stories = [
         story(
             hirer=riya,
@@ -354,6 +357,7 @@ async def seed(session: AsyncSession, _settings: Settings) -> str:
             ),
             appeal="The border follows the brief. The score missed the stitch density.",
         ),
+        *waiting,
     ]
 
     mandates = {}
@@ -369,6 +373,80 @@ async def seed(session: AsyncSession, _settings: Settings) -> str:
         workers[worker].jobs_completed = (workers[worker].jobs_completed or 0) + done
 
     return f"Planted {len(stories)} contracts across Riya, Ada, Kabir and Arjun."
+
+
+def riya_approvals(riya, kabir, arjun_org, workers: dict, now) -> list[dict]:
+    """Contracts above Riya's approval line. They stay pending until she decides."""
+    return [
+        story(
+            hirer=riya,
+            worker=workers["Arjun"],
+            provider=arjun_org,
+            title="Pallu sketch for the wedding stole",
+            work_type="design",
+            request="A pallu sketch for a wedding stole, with room for the couple's initials.",
+            description="One pallu sketch that can be stitched along the end of the stole.",
+            amount="55.00",
+            count=1,
+            state="awaiting_approval",
+            when=now - timedelta(hours=6),
+            deadline=now + timedelta(days=5),
+            approval=(
+                "This contract is $55.00. Your mandate asks for approval above the line you set."
+            ),
+        ),
+        story(
+            hirer=riya,
+            worker=workers["Lipi"],
+            provider=kabir,
+            title="Bengali listings for the Kolkata shop",
+            work_type="translation",
+            request="Translate 40 listings into Bengali. Leave the prices as written.",
+            description="Forty Bengali listings. Names and prices stay as written.",
+            amount="48.00",
+            count=40,
+            state="awaiting_approval",
+            when=now - timedelta(hours=4),
+            deadline=now + timedelta(days=4),
+            approval=(
+                "This contract is $48.00. Your mandate asks for approval above the line you set."
+            ),
+        ),
+        story(
+            hirer=riya,
+            worker=workers["QuickWordz"],
+            provider=kabir,
+            title="Gift notes for the festive box",
+            work_type="copywriting",
+            request="Write a short gift note for each of 8 festive boxes.",
+            description="Eight gift notes, one for each box in the festive set.",
+            amount="42.00",
+            count=8,
+            state="awaiting_approval",
+            when=now - timedelta(hours=2),
+            deadline=now + timedelta(days=3),
+            approval=(
+                "This contract is $42.00. Your mandate asks for approval above the line you set."
+            ),
+        ),
+    ]
+
+
+async def plant_missing(session: AsyncSession, items: list[dict], *, now) -> int:
+    added = 0
+    mandates: dict = {}
+    for item in items:
+        exists = await session.scalar(select(Contract.id).where(Contract.title == item["title"]))
+        if exists is not None:
+            continue
+        org = item["hirer"]
+        if org.id not in mandates:
+            mandates[org.id] = await session.scalar(
+                select(Mandate.id).where(Mandate.org_id == org.id, Mandate.is_active.is_(True))
+            )
+        await plant(session, item, mandate_id=mandates[org.id], now=now)
+        added += 1
+    return added
 
 
 def story(**fields: object) -> dict:
