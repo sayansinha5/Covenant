@@ -44,23 +44,46 @@ You can hire translation, catalogue data, copywriting, and design. You can also 
 
 - Python 3.12 or newer
 - Node.js 20 or newer, with npm
-- MySQL 8
+- MySQL 8, or Docker Desktop if you start the backend with Compose
 - Git
 - A [PayPal sandbox](https://developer.paypal.com/dashboard/) app if you want real holds and payouts
 - An API key for the model provider you set in `backend/.env` and `workers/.env`
 
 ## How to run
 
-There is no single start script. Each process has its own terminal.
+Copy the example env files, then fill in PayPal and the model provider:
 
-1. Copy the example env files:
-   - `.env.example` to `.env`
-   - `backend/.env.example` to `backend/.env`
-   - `workers/.env.example` to `workers/.env`
-   - `mcp_server/.env.example` to `mcp_server/.env`
-   - `frontend/.env.example` to `frontend/.env`
-2. Put your PayPal sandbox client id and secret in `backend/.env` (`PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET`). Put the same model provider, key, and model in `backend/.env` and `workers/.env`.
-3. In MySQL, as root, create the databases and users. The passwords match `.env.example`.
+- `.env.example` to `.env`
+- `backend/.env.example` to `backend/.env`
+- `workers/.env.example` to `workers/.env`
+- `mcp_server/.env.example` to `mcp_server/.env`
+- `frontend/.env.example` to `frontend/.env`
+
+Put `PAYPAL_CLIENT_ID` and `PAYPAL_CLIENT_SECRET` in `backend/.env`. Put the same model provider, key, and model in `backend/.env` and `workers/.env`.
+
+### Docker
+
+From `backend/`. This starts MySQL, the API, the job runner, and the three workers. The frontend still runs with npm.
+
+```bash
+docker compose build api
+docker compose build lipi
+docker compose up -d mysql
+docker compose run --rm api alembic upgrade head
+docker compose run --rm api python -m app.seed.admin
+docker compose run --rm api python -m app.seed.kantha
+docker compose run --rm api python -m app.seed.kabir
+docker compose run --rm api python -m app.seed.arjun
+docker compose up -d api runner lipi tally quickwordz
+```
+
+Then, from `frontend/`, run `npm install` and `npm run dev`. Open [http://localhost:5173](http://localhost:5173).
+
+### On the machine
+
+Each process has its own terminal.
+
+1. In MySQL, as root, create the databases and users. The passwords match `.env.example`.
 
 ```sql
 CREATE DATABASE IF NOT EXISTS covenant CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
@@ -75,7 +98,7 @@ GRANT SELECT ON covenant.* TO 'covenant_app'@'localhost';
 GRANT SELECT ON covenant_test.* TO 'covenant_app'@'localhost';
 ```
 
-4. From `backend/`, create a virtualenv, install, migrate, and seed:
+2. From `backend/`, create a virtualenv, install, migrate, and seed:
 
 ```bash
 python -m venv .venv
@@ -92,19 +115,19 @@ python -m app.seed.kabir
 python -m app.seed.arjun
 ```
 
-5. Start the API, still in `backend/`:
+3. Start the API, still in `backend/`:
 
 ```bash
 uvicorn app.main:create_app --factory --host 127.0.0.1 --port 8000 --reload
 ```
 
-6. In another terminal, from `backend/` with the same virtualenv, start the job runner:
+4. In another terminal, from `backend/` with the same virtualenv, start the job runner:
 
 ```bash
 python -m app.runner
 ```
 
-7. From `workers/`, create a virtualenv, install, then start each worker in its own terminal:
+5. From `workers/`, create a virtualenv, install, then start each worker in its own terminal:
 
 ```bash
 python -m venv .venv
@@ -114,7 +137,7 @@ python -m tally
 python -m quickwordz
 ```
 
-8. From `frontend/`:
+6. From `frontend/`:
 
 ```bash
 npm install
@@ -125,7 +148,7 @@ Open [http://localhost:5173](http://localhost:5173).
 
 ### Sample logins
 
-Seed commands run from `backend/`. Running one again does not reset a password that already exists.
+Seed commands run from `backend/`. With Docker, prefix one with `docker compose run --rm api`. Running a seed again does not reset a password that already exists.
 
 | Email | Password | Role | Command |
 | --- | --- | --- | --- |

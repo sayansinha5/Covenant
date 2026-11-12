@@ -1,0 +1,137 @@
+# Local development. Run from backend/: `docker compose up -d mysql api runner lipi tally quickwordz`
+name: covenant
+
+services:
+  mysql:
+    image: mysql:8.4
+    env_file: [../.env]
+    environment:
+      TZ: UTC
+    # Server settings are flags rather than a mounted .cnf file: MySQL silently ignores config
+    # files that look world-writable, which is how Windows bind mounts appear inside Linux.
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_0900_ai_ci
+      - --default-time-zone=+00:00
+      - --transaction-isolation=READ-COMMITTED
+      - --sql-mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,ONLY_FULL_GROUP_BY
+    ports: ["127.0.0.1:${MYSQL_HOST_PORT:-3306}:3306"]
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  api:
+    build: .
+    image: covenant-backend:dev
+    env_file: [../.env, .env]
+    environment:
+      # Bind mounts from Windows and macOS hosts don't deliver file events, so --reload polls.
+      WATCHFILES_FORCE_POLLING: "true"
+      DB_HOST: mysql
+      ALLOWED_AGENT_HOSTS: lipi,tally,quickwordz,host.docker.internal
+      LIPI_PUBLIC_URL: http://lipi:9101
+      TALLY_PUBLIC_URL: http://tally:9102
+      QUICKWORDZ_PUBLIC_URL: http://quickwordz:9103
+    command: uvicorn app.main:create_app --factory --host 0.0.0.0 --port 8000 --reload --reload-dir app
+    ports: ["127.0.0.1:${API_HOST_PORT:-8000}:8000"]
+    volumes:
+      - .:/app
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    depends_on:
+      mysql: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health')"]
+      interval: 10s
+      retries: 12
+
+  runner:
+    build: .
+    image: covenant-backend:dev
+    env_file: [../.env, .env]
+    environment:
+      DB_HOST: mysql
+      ALLOWED_AGENT_HOSTS: lipi,tally,quickwordz,host.docker.internal
+    command: python -m app.runner
+    volumes:
+      - .:/app
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    depends_on:
+      mysql: { condition: service_healthy }
+
+  lipi:
+    build: ../workers
+    image: covenant-workers:dev
+    env_file: [../workers/.env]
+    environment:
+      WORKER_HOST: 0.0.0.0
+      LIPI_PUBLIC_URL: http://lipi:9101
+    command: python -m lipi
+    ports: ["127.0.0.1:9101:9101"]
+    volumes: ["../workers:/app"]
+
+  tally:
+    build: ../workers
+    image: covenant-workers:dev
+    env_file: [../workers/.env]
+    environment:
+      WORKER_HOST: 0.0.0.0
+      TALLY_PUBLIC_URL: http://tally:9102
+    command: python -m tally
+    ports: ["127.0.0.1:9102:9102"]
+    volumes: ["../workers:/app"]
+
+  quickwordz:
+    build: ../workers
+    image: covenant-workers:dev
+    env_file: [../workers/.env]
+    environment:
+      WORKER_HOST: 0.0.0.0
+      QUICKWORDZ_PUBLIC_URL: http://quickwordz:9103
+    command: python -m quickwordz
+    ports: ["127.0.0.1:9103:9103"]
+    volumes: ["../workers:/app"]
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.17.4
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: "false"
+      xpack.security.http.ssl.enabled: "false"
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+      cluster.name: covenant-local
+    ulimits:
+      memlock: { soft: -1, hard: -1 }
+    ports: ["127.0.0.1:${ELASTIC_HOST_PORT:-9200}:9200"]
+    volumes:
+      - elastic_data:/usr/share/elasticsearch/data
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl -fsS http://127.0.0.1:9200/_cluster/health | grep -qE '\"status\":\"(green|yellow)\"'",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 25s
+
+  mcp:
+    build: ../mcp_server
+    image: covenant-mcp:dev
+    env_file: [../mcp_server/.env]
+    environment:
+      COVENANT_API_URL: http://api:8000/api/v1
+    command: python -m covenant_mcp.server
+    stdin_open: true
+    volumes: ["../mcp_server:/app"]
+    profiles: ["tools"]
+    depends_on: [api]
+
+volumes:
+  mysql_data:
+  elastic_data:

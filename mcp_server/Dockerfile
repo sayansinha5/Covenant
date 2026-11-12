@@ -1,0 +1,20 @@
+FROM python:3.12-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PYTHONPATH=/app
+
+WORKDIR /app
+
+# Dependencies only; the source tree is bind-mounted at /app by docker-compose.yml.
+COPY pyproject.toml /tmp/pyproject.toml
+RUN python -c "import tomllib; p = tomllib.load(open('/tmp/pyproject.toml', 'rb'))['project']; print('\n'.join(p['dependencies'] + p['optional-dependencies']['dev']))" > /tmp/requirements.txt \
+    && pip install --no-cache-dir -r /tmp/requirements.txt \
+    && rm /tmp/requirements.txt /tmp/pyproject.toml
+
+ENV RUFF_CACHE_DIR=/tmp/ruff-cache
+
+RUN useradd --uid 10001 --create-home --shell /usr/sbin/nologin covenant \
+    && chown covenant /app
+USER 10001

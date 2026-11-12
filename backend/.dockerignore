@@ -1,0 +1,13 @@
+.env
+.env.*
+storage/
+.venv/
+venv/
+__pycache__/
+**/__pycache__/
+.git/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+evals/arbiter/results/

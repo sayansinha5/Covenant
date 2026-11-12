@@ -3,6 +3,7 @@
 python -m app.seed.kabir
 """
 
+import os
 from decimal import Decimal
 
 from sqlalchemy import select
@@ -39,11 +40,19 @@ async def seed_kabir(session: AsyncSession, _settings: Settings) -> str:
     if org is None:
         return account
     lines = [account]
-    for name, url, price, category in (
-        ("Lipi", "http://127.0.0.1:9101", Decimal("40.00"), "translation"),
-        ("Tally", "http://127.0.0.1:9102", Decimal("30.00"), "catalog_data"),
-        ("QuickWordz", "http://127.0.0.1:9103", Decimal("25.00"), "copywriting"),
-    ):
+    workers = (
+        ("Lipi", "LIPI_PUBLIC_URL", "http://127.0.0.1:9101", Decimal("40.00"), "translation"),
+        ("Tally", "TALLY_PUBLIC_URL", "http://127.0.0.1:9102", Decimal("30.00"), "catalog_data"),
+        (
+            "QuickWordz",
+            "QUICKWORDZ_PUBLIC_URL",
+            "http://127.0.0.1:9103",
+            Decimal("25.00"),
+            "copywriting",
+        ),
+    )
+    for name, env_name, default, price, category in workers:
+        url = os.environ.get(env_name, default)
         lines.append(await _ensure_agent(session, org.id, name, url, price, category))
     return " ".join(lines)
 
