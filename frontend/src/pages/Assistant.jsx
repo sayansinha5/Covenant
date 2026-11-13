@@ -23,9 +23,11 @@ const SUGGESTION_CLASS =
   'rounded-md border border-line bg-surface px-4 py-2 text-left text-sm shadow-sm transition-[border-color,background-color] duration-200 ease-fluid hover:border-brand hover:bg-brand-subtle';
 
 const SUGGESTIONS = [
-  'Translate 40 listings into German, budget $40',
+  'Wanted a worker for a product page for translation under $50',
+  'Translate a listing into German, budget for translation around $40',
   'Find a designer for a product page under $80',
   'Shortlist copywriters with reputation above 50',
+  'List me all the workers for every category',
 ];
 
 export function Assistant() {
@@ -312,7 +314,7 @@ function Composer({ value, busy, tall = false, inputRef, onChange, onKeyDown, on
           rows={tall ? 4 : 1}
           value={value}
           aria-label="Describe the job"
-          placeholder="Translate 40 listings into German, budget $40"
+          placeholder="List me all the workers for every category"
           onChange={onChange}
           onKeyDown={onKeyDown}
           className={cn(
